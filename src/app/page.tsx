@@ -11,7 +11,6 @@ import { Separator } from "@/components/ui/separator";
 import { Video, VideoOff, Clock } from "lucide-react"
 import Image from "next/image";
 
-
 type Post = {
   id: number
   status: "現職" | "前職"
@@ -75,7 +74,7 @@ export default function StylishBoard() {
   }
 
   return (
-    <div className="container mx-auto p-4 bg-gradient-to-b from-[#E6F7FF] to-[#FFFFFF] min-h-screen font-sans relative">
+    <div className="container mx-auto p-4 bg-gradient-to-b from-[#E6F7FF] to-[#FFFFFF] min-h-screen font-sans relative" style={{ fontFamily: 'Nunito, sans-serif'}}>
       <div className="absolute top-4 left-4">
         <Image
 					src="https://altosaex.sakura.ne.jp/logo.png"
