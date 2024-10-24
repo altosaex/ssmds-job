@@ -19,7 +19,7 @@ type Post = {
   industry: string
   yearsOfExperience: number
   nickname: string
-  age: number
+  age: string
   gender: string
   comment: string
 	imageUrl?: string
@@ -28,12 +28,12 @@ type Post = {
 }
 
 const dummyPosts: Post[] = [
-  { id: 1, status: "現職", job: "プロコーチ", industry: "コーチング", yearsOfExperience: 5, nickname: "望月 彩恵", age: 39, gender: "女性", comment: "コーチとして独立して5年。コーチングスクール講師業や企業研修支援など、法人／個人問わず、日々色々な方の目標達成支援を行っております。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/MochizukiSae.png", sessionVideo: "ON", preferredSessionTime: "都度相談" },
-  { id: 2, status: "現職", job: "データサイエンティスト", industry: "IT", yearsOfExperience: 5, nickname: "数字の魔術師", age: 28, gender: "男性", comment: "データから価値ある洞察を引き出すのが得意です。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "OFF" , preferredSessionTime: "平日夜間希望" },
-  { id: 3, status: "前職", job: "小学校教師", industry: "教育", yearsOfExperience: 15, nickname: "笑顔の先生", age: 45, gender: "女性", comment: "子どもたちの成長を見守るのが最高の喜びでした。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/woman.png", sessionVideo: "ON" , preferredSessionTime: "土日夜間希望" },
-  { id: 4, status: "現職", job: "建築家", industry: "建設", yearsOfExperience: 12, nickname: "空間の魔法使い", age: 40, gender: "男性", comment: "持続可能な都市設計に情熱を注いでいます。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "ON" , preferredSessionTime: "平日午後希望" },
-  { id: 5, status: "現職", job: "フリーランスライター", industry: "メディア", yearsOfExperience: 8, nickname: "言葉の職人", age: 35, gender: "女性", comment: "多様なトピックを分かりやすく伝えるのが私の使命です。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/woman.png", sessionVideo: "ON" , preferredSessionTime: "午前中希望" },
-  { id: 6, status: "前職", job: "プロサッカー選手", industry: "スポーツ", yearsOfExperience: 10, nickname: "フィールドの閃光", age: 33, gender: "男性", comment: "チームワークの大切さを身をもって学びました。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "OFF" , preferredSessionTime: "週末午後希望" },
+  { id: 1, status: "現職", job: "プロコーチ", industry: "コーチング", yearsOfExperience: 5, nickname: "望月 彩恵", age: "39歳", gender: "女性", comment: "コーチとして独立して5年。コーチングスクール講師業や企業研修支援など、法人／個人問わず、日々色々な方の目標達成支援を行っております。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/MochizukiSae.png", sessionVideo: "ON", preferredSessionTime: "都度相談" },
+  { id: 2, status: "現職", job: "データサイエンティスト", industry: "IT", yearsOfExperience: 5, nickname: "数字の魔術師", age: "28歳", gender: "男性", comment: "データから価値ある洞察を引き出すのが得意です。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "OFF" , preferredSessionTime: "平日夜間希望" },
+  { id: 3, status: "前職", job: "小学校教師", industry: "教育", yearsOfExperience: 15, nickname: "笑顔の先生", age: "40代", gender: "女性", comment: "子どもたちの成長を見守るのが最高の喜びでした。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/woman.png", sessionVideo: "ON" , preferredSessionTime: "土日夜間希望" },
+  { id: 4, status: "現職", job: "建築家", industry: "建設", yearsOfExperience: 12, nickname: "空間の魔法使い", age: "40歳", gender: "男性", comment: "持続可能な都市設計に情熱を注いでいます。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "ON" , preferredSessionTime: "平日午後希望" },
+  { id: 5, status: "現職", job: "フリーランスライター", industry: "メディア", yearsOfExperience: 8, nickname: "言葉の職人", age: "35歳", gender: "女性", comment: "多様なトピックを分かりやすく伝えるのが私の使命です。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/woman.png", sessionVideo: "ON" , preferredSessionTime: "午前中希望" },
+  { id: 6, status: "前職", job: "プロサッカー選手", industry: "スポーツ", yearsOfExperience: 10, nickname: "フィールドの閃光", age: "30代", gender: "男性", comment: "チームワークの大切さを身をもって学びました。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "OFF" , preferredSessionTime: "週末午後希望" },
 ]
 
 export default function StylishBoard() {
@@ -61,14 +61,20 @@ export default function StylishBoard() {
     )
 
     filteredPosts.sort((a, b) => {
-      if (sort === "yearsOfExperience") {
-        return b.yearsOfExperience - a.yearsOfExperience
-      } else if (sort === "age") {
-        return b.age - a.age
-      } else {
-        return a.job.localeCompare(b.job)
-      }
-    })
+    if (sort === "yearsOfExperience") {
+      return b.yearsOfExperience - a.yearsOfExperience;
+    } else if (sort === "age") {
+      // 年齢が '30代' のように来る場合、最初の数値部分を取り出す
+      const ageA = parseInt(a.age.match(/\d+/)[0]);
+      const ageB = parseInt(b.age.match(/\d+/)[0]);
+      return ageB - ageA;
+    } else if (sort === "id") {
+      // IDによる昇順ソート
+      return a.id - b.id;
+    } else {
+      return a.job.localeCompare(b.job);
+    }
+  });
 
     setPosts(filteredPosts)
   }
@@ -100,19 +106,23 @@ export default function StylishBoard() {
     <SelectValue placeholder="並び順" className="pl-3 pr-10" />
   </SelectTrigger>
   <SelectContent className="mt-1 border-[#3BB4E5] border-2 rounded-md shadow-lg bg-white">
-    <SelectItem className="relative p-2 pl-3 pr-10 hover:bg-gray-100 flex justify-between items-center" value="yearsOfExperience">
-      勤続年数順
-      <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#3BB4E5]"></span>
-    </SelectItem>
-    <SelectItem className="relative p-2 pl-3 pr-10 hover:bg-gray-100 flex justify-between items-center" value="age">
-      年齢順
-      <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#3BB4E5]"></span>
-    </SelectItem>
     <SelectItem className="relative p-2 pl-3 pr-10 hover:bg-gray-100 flex justify-between items-center" value="job">
       職業名順
       <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#3BB4E5]"></span>
-    </SelectItem>
-  </SelectContent>
+			</SelectItem>
+			<SelectItem className="relative p-2 pl-3 pr-10 hover:bg-gray-100 flex justify-between items-center" value="yearsOfExperience">
+      勤続年数順
+      <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#3BB4E5]"></span>
+			</SelectItem>
+			<SelectItem className="relative p-2 pl-3 pr-10 hover:bg-gray-100 flex justify-between items-center" value="age">
+      年齢順
+      <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#3BB4E5]"></span>
+			</SelectItem>
+    
+			<SelectItem className="relative p-2 pl-3 pr-10 hover:bg-gray-100 flex justify-between items-center" value="id">
+      ID順
+			</SelectItem>
+		</SelectContent>
 </Select>
 
       </div>
@@ -143,7 +153,7 @@ export default function StylishBoard() {
             <CardContent className="flex-grow p-4 bg-white">
               <div className="flex justify-between mb-2 text-sm text-gray-600">
                 <span>勤続年数: {post.yearsOfExperience}年</span>
-                <span>{post.age}歳 / {post.gender}</span>
+                <span>{post.age} / {post.gender}</span>
 							</div>
 							<Separator className="my-2" />
               <p className="text-gray-700 mt-2 mb-4">{post.comment}</p>
