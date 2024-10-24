@@ -63,11 +63,6 @@ export default function StylishBoard() {
     filteredPosts.sort((a, b) => {
     if (sort === "yearsOfExperience") {
       return b.yearsOfExperience - a.yearsOfExperience;
-    } else if (sort === "age") {
-      // 年齢が '30代' のように来る場合、最初の数値部分を取り出す
-      const ageA = parseInt(a.age.match(/\d+/)[0]);
-      const ageB = parseInt(b.age.match(/\d+/)[0]);
-      return ageB - ageA;
     } else if (sort === "id") {
       // IDによる昇順ソート
       return a.id - b.id;
@@ -112,10 +107,6 @@ export default function StylishBoard() {
 			</SelectItem>
 			<SelectItem className="relative p-2 pl-3 pr-10 hover:bg-gray-100 flex justify-between items-center" value="yearsOfExperience">
       勤続年数順
-      <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#3BB4E5]"></span>
-			</SelectItem>
-			<SelectItem className="relative p-2 pl-3 pr-10 hover:bg-gray-100 flex justify-between items-center" value="age">
-      年齢順
       <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#3BB4E5]"></span>
 			</SelectItem>
     
