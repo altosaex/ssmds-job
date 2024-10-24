@@ -34,7 +34,7 @@ const dummyPosts: Post[] = [
 	{ id: 5, status: "現職", job: "会社員", industry: "人材", yearsOfExperience: 15, nickname: "武藤 梨恵", age: "38歳", gender: "女性", comment: "人材業界のパーソルキャリアで新卒採用および採用全体の企画/マーケ等を担当しています。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/武藤梨恵.jpeg", sessionVideo: "ON" , preferredSessionTime: "都度相談" },
 	{ id: 6, status: "現職", job: "製造業", industry: "自動車", yearsOfExperience: 12, nickname: "5児の父", age: "34歳", gender: "男性", comment: "スマートシティの企画運営", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/5児の父.jpeg", sessionVideo: "ON", preferredSessionTime: "平日夜間, 土日祝日中, 土日祝夜間" },
 	{ id: 7, status: "現職", job: "会社員", industry: "コンサルティング", yearsOfExperience: 7, nickname: "ごう", age: "29歳", gender: "男性", comment: "大学卒業後、新卒でベイカレントコンサルティングに就職して、7年現職。仕事内容はPM、PMOなどプロジェクト管理。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/KudohGo.jpeg", sessionVideo: "ON" , preferredSessionTime: "土日祝希望" },
-
+	{ id: 8, status: "現職", job: "金融系ベンチャーキャピタル", industry: "金融", yearsOfExperience: 14, nickname: "ひろ", age: "37歳", gender: "男性", comment: "金融系VCでベンチャー投資をしています。過去に金融機関で法人営業を10年、その後、金融系VCで4年ベンチャー投資と経営企画を行っています。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "ON" , preferredSessionTime: "都度相談" },
 ]
 
 export default function StylishBoard() {
