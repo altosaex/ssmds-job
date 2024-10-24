@@ -22,17 +22,16 @@ type Post = {
   gender: string
   comment: string
 	imageUrl?: string
-	sessionVideo: "ON" | "OFF"
+	sessionVideo: "ON" | "OFF" | "都度相談"
 	preferredSessionTime: string
 }
 
 const dummyPosts: Post[] = [
   { id: 1, status: "現職", job: "プロコーチ", industry: "コーチング", yearsOfExperience: 5, nickname: "望月 彩恵", age: "39歳", gender: "女性", comment: "コーチとして独立して5年。コーチングスクール講師業や企業研修支援など、法人／個人問わず、日々色々な方の目標達成支援を行っております。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/MochizukiSae.png", sessionVideo: "ON", preferredSessionTime: "都度相談" },
-  { id: 2, status: "現職", job: "データサイエンティスト", industry: "IT", yearsOfExperience: 5, nickname: "数字の魔術師", age: "28歳", gender: "男性", comment: "データから価値ある洞察を引き出すのが得意です。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "OFF" , preferredSessionTime: "平日夜間希望" },
-  { id: 3, status: "前職", job: "小学校教師", industry: "教育", yearsOfExperience: 15, nickname: "笑顔の先生", age: "40代", gender: "女性", comment: "子どもたちの成長を見守るのが最高の喜びでした。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/woman.png", sessionVideo: "ON" , preferredSessionTime: "土日夜間希望" },
-  { id: 4, status: "現職", job: "建築家", industry: "建設", yearsOfExperience: 12, nickname: "空間の魔法使い", age: "40歳", gender: "男性", comment: "持続可能な都市設計に情熱を注いでいます。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "ON" , preferredSessionTime: "平日午後希望" },
-  { id: 5, status: "現職", job: "フリーランスライター", industry: "メディア", yearsOfExperience: 8, nickname: "言葉の職人", age: "35歳", gender: "女性", comment: "多様なトピックを分かりやすく伝えるのが私の使命です。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/woman.png", sessionVideo: "ON" , preferredSessionTime: "午前中希望" },
-  { id: 6, status: "前職", job: "プロサッカー選手", industry: "スポーツ", yearsOfExperience: 10, nickname: "フィールドの閃光", age: "30代", gender: "男性", comment: "チームワークの大切さを身をもって学びました。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "OFF" , preferredSessionTime: "週末午後希望" },
+  { id: 2, status: "現職", job: "広告、制作ディレクター", industry: "広告、制作、採用", yearsOfExperience: 7, nickname: "高橋 駿", age: "33歳", gender: "男性", comment: "広告代理店のベンチャー企業で執行役員をしています。最近では採用業界のコンテンツ作り、採用支援を行っております。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/TakahashiShun.jpg", sessionVideo: "ON" , preferredSessionTime: "都度相談" },
+  { id: 3, status: "現職", job: "クライアントゲームプログラマー", industry: "ゲーム業界", yearsOfExperience: 13, nickname: "三原 広貴", age: "33歳", gender: "男性", comment: "Unityを使ったゲーム制作を13年ほど行っております。どのセクションにおいても設計をこなせ、即座にゲームを完成させることが得意です。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/MiharaHiroki.jpeg", sessionVideo: "ON" , preferredSessionTime: "平日夜間希望" },
+  { id: 4, status: "現職", job: "スマホアプリの労務", industry: "IT", yearsOfExperience: 7, nickname: "ワタナベ", age: "36歳", gender: "女性", comment: "人材サービスのコーディネーターからゲームアプリの採用担当になり、今はアプリ会社の労務を担当してます。入退社手続き、勤怠管理、給与計算など担当してます。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/woman.png", sessionVideo: "都度相談" , preferredSessionTime: "都度相談" },
+
 ]
 
 export default function StylishBoard() {
