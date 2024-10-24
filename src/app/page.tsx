@@ -26,12 +26,12 @@ type Post = {
 }
 
 const dummyPosts: Post[] = [
-  { id: 1, status: "現職", job: "ファッションデザイナー", industry: "アパレル", yearsOfExperience: 7, nickname: "デザインの妖精", age: 32, gender: "女性", comment: "トレンドを先取りする洞察力が私の強みです。", imageUrl: "https://altosaex.sakura.ne.jp/woman.png", sessionVideo: "ON"  },
-  { id: 2, status: "現職", job: "データサイエンティスト", industry: "IT", yearsOfExperience: 5, nickname: "数字の魔術師", age: 28, gender: "男性", comment: "データから価値ある洞察を引き出すのが得意です。", imageUrl: "https://altosaex.sakura.ne.jp/man.png", sessionVideo: "OFF"  },
-  { id: 3, status: "前職", job: "小学校教師", industry: "教育", yearsOfExperience: 15, nickname: "笑顔の先生", age: 45, gender: "女性", comment: "子どもたちの成長を見守るのが最高の喜びでした。", imageUrl: "https://altosaex.sakura.ne.jp/woman.png", sessionVideo: "ON"  },
-  { id: 4, status: "現職", job: "建築家", industry: "建設", yearsOfExperience: 12, nickname: "空間の魔法使い", age: 40, gender: "男性", comment: "持続可能な都市設計に情熱を注いでいます。", imageUrl: "https://altosaex.sakura.ne.jp/man.png", sessionVideo: "ON"  },
-  { id: 5, status: "現職", job: "フリーランスライター", industry: "メディア", yearsOfExperience: 8, nickname: "言葉の職人", age: 35, gender: "女性", comment: "多様なトピックを分かりやすく伝えるのが私の使命です。", imageUrl: "https://altosaex.sakura.ne.jp/woman.png", sessionVideo: "ON"  },
-  { id: 6, status: "前職", job: "プロサッカー選手", industry: "スポーツ", yearsOfExperience: 10, nickname: "フィールドの閃光", age: 33, gender: "男性", comment: "チームワークの大切さを身をもって学びました。", imageUrl: "https://altosaex.sakura.ne.jp/man.png", sessionVideo: "OFF"  },
+  { id: 1, status: "現職", job: "プロコーチ", industry: "コーチング", yearsOfExperience: 5, nickname: "望月 彩恵", age: 39, gender: "女性", comment: "コーチとして独立して5年。コーチングスクール講師業や企業研修支援など、法人／個人問わず、日々色々な方の目標達成支援を行っております。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/MochizukiSae.png", sessionVideo: "ON"  },
+  { id: 2, status: "現職", job: "データサイエンティスト", industry: "IT", yearsOfExperience: 5, nickname: "数字の魔術師", age: 28, gender: "男性", comment: "データから価値ある洞察を引き出すのが得意です。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "OFF"  },
+  { id: 3, status: "前職", job: "小学校教師", industry: "教育", yearsOfExperience: 15, nickname: "笑顔の先生", age: 45, gender: "女性", comment: "子どもたちの成長を見守るのが最高の喜びでした。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/woman.png", sessionVideo: "ON"  },
+  { id: 4, status: "現職", job: "建築家", industry: "建設", yearsOfExperience: 12, nickname: "空間の魔法使い", age: 40, gender: "男性", comment: "持続可能な都市設計に情熱を注いでいます。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "ON"  },
+  { id: 5, status: "現職", job: "フリーランスライター", industry: "メディア", yearsOfExperience: 8, nickname: "言葉の職人", age: 35, gender: "女性", comment: "多様なトピックを分かりやすく伝えるのが私の使命です。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/woman.png", sessionVideo: "ON"  },
+  { id: 6, status: "前職", job: "プロサッカー選手", industry: "スポーツ", yearsOfExperience: 10, nickname: "フィールドの閃光", age: 33, gender: "男性", comment: "チームワークの大切さを身をもって学びました。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "OFF"  },
 ]
 
 export default function StylishBoard() {
@@ -159,8 +159,8 @@ export default function StylishBoard() {
                 </div>
               </div>
             </CardContent>
-            <CardFooter className="flex justify-end p-4 bg-[#F0FAFF]">
-              <span className="text-sm text-gray-500">ID: {post.id}</span>
+            <CardFooter className="flex justify-end p-2 bg-[#F0FAFF]">
+              <span className="text-xs text-gray-500">ID: {post.id}</span>
             </CardFooter>
           </Card>
         ))}
