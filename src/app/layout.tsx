@@ -1,34 +1,34 @@
-import React from 'react';
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
+import "./globals.css"
+import { Metadata } from "next"
+import { Noto_Sans_JP, Roboto } from 'next/font/google'
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const notoSansJP = Noto_Sans_JP({
+  weight: ['400', '500', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-noto-sans-jp',
+})
+
+const roboto = Roboto({
+  weight: ['400', '500', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-roboto',
+})
 
 export const metadata: Metadata = {
-  title: "ススミダス職業登録者一覧",
-  description: "susumidasu job page",
-};
+  title: "スタイリッシュ掲示板",
+  description: "A stylish board application",
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-      </body>
+    <html lang="ja" className={`${notoSansJP.variable} ${roboto.variable}`}>
+      <body>{children}</body>
     </html>
-  );
+  )
 }
