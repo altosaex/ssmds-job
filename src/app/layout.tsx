@@ -17,8 +17,8 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-  title: "スタイリッシュ掲示板",
-  description: "A stylish board application",
+  title: "ススミダス職業登録者一覧",
+  description: "susumidasu List of occupational registrants ",
 }
 
 export default function RootLayout({
