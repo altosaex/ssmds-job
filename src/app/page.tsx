@@ -153,9 +153,9 @@ export default function StylishBoard() {
                   <span className="text-sm font-medium text-gray-700">セッション時</span>
                   <div className="flex items-center gap-2">
                     {post.sessionVideo === "ON" ? (
-                      <Video className="w-5 h-5 text-[#3BB4E5]" />
+                      <Video className="w-4 h-4 text-[#3BB4E5]" />
                     ) : (
-                      <VideoOff className="w-5 h-5 text-[#3BB4E5]" />
+                      <VideoOff className="w-4 h-4 text-[#3BB4E5]" />
                     )}
                     <span className={`text-sm font-semibold ${post.sessionVideo === "ON" ? "text-[#3BB4E5]" : "text-[#3BB4E5]"}`}>
                       ビデオ{post.sessionVideo}
