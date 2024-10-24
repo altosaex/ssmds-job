@@ -41,7 +41,7 @@ const dummyPosts: Post[] = [
 	{ id: 12, status: "現職", job: "人事", industry: "IT", yearsOfExperience: 5, nickname: "ますだ", age: "30代", gender: "男性", comment: "現在はITスタートアップで人事をしています。採用や組織開発、人事評価制度の設計など人事領域幅広く経験してきました。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "ON", preferredSessionTime: "都度相談" },
 	{ id: 13, status: "現職", job: "webデザイナー", industry: "web広告、マーケティング", yearsOfExperience: 2, nickname: "えみ", age: "40代", gender: "女性", comment: "化粧品の広告を制作しています。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/woman.png", sessionVideo: "ON", preferredSessionTime: "都度相談" },
 	{ id: 14, status: "前職", job: "設計エンジニア", industry: "自動車メーカー", yearsOfExperience: 5, nickname: "てんのう", age: "31歳", gender: "女性", comment: "自動車メーカーで設計エンジニアをしていました。内装やエンジン周りの部品を、CATIAやNXで3Dモデリングしたり、図面を書いていました。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/AoyamaSaki2.jpeg", sessionVideo: "ON", preferredSessionTime: "都度相談" },
-	{ id: 15, status: "現職", job: "SE", industry: "医療系IT", yearsOfExperience: 3, nickname: "永松", age: "28歳", gender: "男性", comment: "九州出身で就職を機に上京、1社目。顧客は主に病院でアブリケーション導入、納品、カスタマイズ等を担当。設計からプログラミングを浅く広く実施しています。人事に異動を計画中", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "都度相談" , preferredSessionTime: "土日祝日中" },
+	{ id: 15, status: "現職", job: "SE", industry: "医療系IT", yearsOfExperience: 3, nickname: "永松", age: "28歳", gender: "男性", comment: "九州出身で就職を機に上京、1社目。顧客は主に病院でアプリケーション導入、納品、カスタマイズ等を担当。設計からプログラミングを浅く広く実施しています。人事に異動を計画中", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "都度相談" , preferredSessionTime: "土日祝日中" },
 ]
 
 export default function StylishBoard() {
