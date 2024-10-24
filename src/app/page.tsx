@@ -8,8 +8,9 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Video, VideoOff } from "lucide-react"
+import { Video, VideoOff, Clock } from "lucide-react"
 import Image from "next/image";
+
 
 type Post = {
   id: number
@@ -23,15 +24,16 @@ type Post = {
   comment: string
 	imageUrl?: string
 	sessionVideo: "ON" | "OFF"
+	preferredSessionTime: string
 }
 
 const dummyPosts: Post[] = [
-  { id: 1, status: "現職", job: "プロコーチ", industry: "コーチング", yearsOfExperience: 5, nickname: "望月 彩恵", age: 39, gender: "女性", comment: "コーチとして独立して5年。コーチングスクール講師業や企業研修支援など、法人／個人問わず、日々色々な方の目標達成支援を行っております。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/MochizukiSae.png", sessionVideo: "ON"  },
-  { id: 2, status: "現職", job: "データサイエンティスト", industry: "IT", yearsOfExperience: 5, nickname: "数字の魔術師", age: 28, gender: "男性", comment: "データから価値ある洞察を引き出すのが得意です。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "OFF"  },
-  { id: 3, status: "前職", job: "小学校教師", industry: "教育", yearsOfExperience: 15, nickname: "笑顔の先生", age: 45, gender: "女性", comment: "子どもたちの成長を見守るのが最高の喜びでした。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/woman.png", sessionVideo: "ON"  },
-  { id: 4, status: "現職", job: "建築家", industry: "建設", yearsOfExperience: 12, nickname: "空間の魔法使い", age: 40, gender: "男性", comment: "持続可能な都市設計に情熱を注いでいます。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "ON"  },
-  { id: 5, status: "現職", job: "フリーランスライター", industry: "メディア", yearsOfExperience: 8, nickname: "言葉の職人", age: 35, gender: "女性", comment: "多様なトピックを分かりやすく伝えるのが私の使命です。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/woman.png", sessionVideo: "ON"  },
-  { id: 6, status: "前職", job: "プロサッカー選手", industry: "スポーツ", yearsOfExperience: 10, nickname: "フィールドの閃光", age: 33, gender: "男性", comment: "チームワークの大切さを身をもって学びました。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "OFF"  },
+  { id: 1, status: "現職", job: "プロコーチ", industry: "コーチング", yearsOfExperience: 5, nickname: "望月 彩恵", age: 39, gender: "女性", comment: "コーチとして独立して5年。コーチングスクール講師業や企業研修支援など、法人／個人問わず、日々色々な方の目標達成支援を行っております。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/MochizukiSae.png", sessionVideo: "ON", preferredSessionTime: "都度相談" },
+  { id: 2, status: "現職", job: "データサイエンティスト", industry: "IT", yearsOfExperience: 5, nickname: "数字の魔術師", age: 28, gender: "男性", comment: "データから価値ある洞察を引き出すのが得意です。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "OFF" , preferredSessionTime: "平日夜間希望" },
+  { id: 3, status: "前職", job: "小学校教師", industry: "教育", yearsOfExperience: 15, nickname: "笑顔の先生", age: 45, gender: "女性", comment: "子どもたちの成長を見守るのが最高の喜びでした。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/woman.png", sessionVideo: "ON" , preferredSessionTime: "土日夜間希望" },
+  { id: 4, status: "現職", job: "建築家", industry: "建設", yearsOfExperience: 12, nickname: "空間の魔法使い", age: 40, gender: "男性", comment: "持続可能な都市設計に情熱を注いでいます。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "ON" , preferredSessionTime: "平日午後希望" },
+  { id: 5, status: "現職", job: "フリーランスライター", industry: "メディア", yearsOfExperience: 8, nickname: "言葉の職人", age: 35, gender: "女性", comment: "多様なトピックを分かりやすく伝えるのが私の使命です。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/woman.png", sessionVideo: "ON" , preferredSessionTime: "午前中希望" },
+  { id: 6, status: "前職", job: "プロサッカー選手", industry: "スポーツ", yearsOfExperience: 10, nickname: "フィールドの閃光", age: 33, gender: "男性", comment: "チームワークの大切さを身をもって学びました。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "OFF" , preferredSessionTime: "週末午後希望" },
 ]
 
 export default function StylishBoard() {
@@ -142,20 +144,29 @@ export default function StylishBoard() {
               <div className="flex justify-between mb-2 text-sm text-gray-600">
                 <span>勤続年数: {post.yearsOfExperience}年</span>
                 <span>{post.age}歳 / {post.gender}</span>
-              </div>
-              <Separator className="my-2" />
+							</div>
+							<Separator className="my-2" />
               <p className="text-gray-700 mt-2 mb-4">{post.comment}</p>
-              <div className="flex items-center justify-between bg-gray-100 rounded-md p-2">
-                <span className="text-sm font-medium text-gray-700">セッション時</span>
-                <div className="flex items-center gap-2">
-                  {post.sessionVideo === "ON" ? (
-                    <Video className="w-5 h-5 text-green-500" />
-                  ) : (
-                    <VideoOff className="w-5 h-5 text-red-500" />
-                  )}
-                  <span className={`text-sm font-semibold ${post.sessionVideo === "ON" ? "text-green-500" : "text-red-500"}`}>
-                    ビデオ{post.sessionVideo}
-                  </span>
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center justify-between bg-gray-100 rounded-md p-2">
+                  <span className="text-sm font-medium text-gray-700">セッション時</span>
+                  <div className="flex items-center gap-2">
+                    {post.sessionVideo === "ON" ? (
+                      <Video className="w-4 h-4 text-green-500" />
+                    ) : (
+                      <VideoOff className="w-4 h-4 text-red-500" />
+                    )}
+                    <span className={`text-sm font-semibold ${post.sessionVideo === "ON" ? "text-green-500" : "text-red-500"}`}>
+                      ビデオ{post.sessionVideo}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between bg-gray-100 rounded-md p-2">
+                  <span className="text-sm font-medium text-gray-700">セッション希望時間帯</span>
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-3 h-3 text-[#3BB4E5]" />
+                    <span className="text-sm font-semibold text-[#3BB4E5]">{post.preferredSessionTime}</span>
+                  </div>
                 </div>
               </div>
             </CardContent>
