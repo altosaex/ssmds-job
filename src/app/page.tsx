@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { Video, VideoOff } from "lucide-react"
 import Image from "next/image";
 
 type Post = {
@@ -20,16 +21,17 @@ type Post = {
   age: number
   gender: string
   comment: string
-  imageUrl?: string
+	imageUrl?: string
+	sessionVideo: "ON" | "OFF"
 }
 
 const dummyPosts: Post[] = [
-  { id: 1, status: "現職", job: "ファッションデザイナー", industry: "アパレル", yearsOfExperience: 7, nickname: "デザインの妖精", age: 32, gender: "女性", comment: "トレンドを先取りする洞察力が私の強みです。", imageUrl: "https://altosaex.sakura.ne.jp/woman.png" },
-  { id: 2, status: "現職", job: "データサイエンティスト", industry: "IT", yearsOfExperience: 5, nickname: "数字の魔術師", age: 28, gender: "男性", comment: "データから価値ある洞察を引き出すのが得意です。", imageUrl: "https://altosaex.sakura.ne.jp/man.png" },
-  { id: 3, status: "前職", job: "小学校教師", industry: "教育", yearsOfExperience: 15, nickname: "笑顔の先生", age: 45, gender: "女性", comment: "子どもたちの成長を見守るのが最高の喜びでした。", imageUrl: "https://altosaex.sakura.ne.jp/woman.png" },
-  { id: 4, status: "現職", job: "建築家", industry: "建設", yearsOfExperience: 12, nickname: "空間の魔法使い", age: 40, gender: "男性", comment: "持続可能な都市設計に情熱を注いでいます。", imageUrl: "https://altosaex.sakura.ne.jp/man.png" },
-  { id: 5, status: "現職", job: "フリーランスライター", industry: "メディア", yearsOfExperience: 8, nickname: "言葉の職人", age: 35, gender: "女性", comment: "多様なトピックを分かりやすく伝えるのが私の使命です。", imageUrl: "https://altosaex.sakura.ne.jp/woman.png" },
-  { id: 6, status: "前職", job: "プロサッカー選手", industry: "スポーツ", yearsOfExperience: 10, nickname: "フィールドの閃光", age: 33, gender: "男性", comment: "チームワークの大切さを身をもって学びました。", imageUrl: "https://altosaex.sakura.ne.jp/man.png" },
+  { id: 1, status: "現職", job: "ファッションデザイナー", industry: "アパレル", yearsOfExperience: 7, nickname: "デザインの妖精", age: 32, gender: "女性", comment: "トレンドを先取りする洞察力が私の強みです。", imageUrl: "https://altosaex.sakura.ne.jp/woman.png", sessionVideo: "ON"  },
+  { id: 2, status: "現職", job: "データサイエンティスト", industry: "IT", yearsOfExperience: 5, nickname: "数字の魔術師", age: 28, gender: "男性", comment: "データから価値ある洞察を引き出すのが得意です。", imageUrl: "https://altosaex.sakura.ne.jp/man.png", sessionVideo: "OFF"  },
+  { id: 3, status: "前職", job: "小学校教師", industry: "教育", yearsOfExperience: 15, nickname: "笑顔の先生", age: 45, gender: "女性", comment: "子どもたちの成長を見守るのが最高の喜びでした。", imageUrl: "https://altosaex.sakura.ne.jp/woman.png", sessionVideo: "ON"  },
+  { id: 4, status: "現職", job: "建築家", industry: "建設", yearsOfExperience: 12, nickname: "空間の魔法使い", age: 40, gender: "男性", comment: "持続可能な都市設計に情熱を注いでいます。", imageUrl: "https://altosaex.sakura.ne.jp/man.png", sessionVideo: "ON"  },
+  { id: 5, status: "現職", job: "フリーランスライター", industry: "メディア", yearsOfExperience: 8, nickname: "言葉の職人", age: 35, gender: "女性", comment: "多様なトピックを分かりやすく伝えるのが私の使命です。", imageUrl: "https://altosaex.sakura.ne.jp/woman.png", sessionVideo: "ON"  },
+  { id: 6, status: "前職", job: "プロサッカー選手", industry: "スポーツ", yearsOfExperience: 10, nickname: "フィールドの閃光", age: 33, gender: "男性", comment: "チームワークの大切さを身をもって学びました。", imageUrl: "https://altosaex.sakura.ne.jp/man.png", sessionVideo: "OFF"  },
 ]
 
 export default function StylishBoard() {
@@ -138,11 +140,24 @@ export default function StylishBoard() {
             </CardHeader>
             <CardContent className="flex-grow p-4 bg-white">
               <div className="flex justify-between mb-2 text-sm text-gray-600">
-                <span> 勤続年数: {post.yearsOfExperience} 年</span>
-                <span>{post.age} 歳 / {post.gender}</span>
+                <span>勤続年数: {post.yearsOfExperience}年</span>
+                <span>{post.age}歳 / {post.gender}</span>
               </div>
               <Separator className="my-2" />
-              <p className="text-gray-700 mt-2">{post.comment}</p>
+              <p className="text-gray-700 mt-2 mb-4">{post.comment}</p>
+              <div className="flex items-center justify-between bg-gray-100 rounded-md p-2">
+                <span className="text-sm font-medium text-gray-700">セッション時</span>
+                <div className="flex items-center gap-2">
+                  {post.sessionVideo === "ON" ? (
+                    <Video className="w-5 h-5 text-green-500" />
+                  ) : (
+                    <VideoOff className="w-5 h-5 text-red-500" />
+                  )}
+                  <span className={`text-sm font-semibold ${post.sessionVideo === "ON" ? "text-green-500" : "text-red-500"}`}>
+                    ビデオ{post.sessionVideo}
+                  </span>
+                </div>
+              </div>
             </CardContent>
             <CardFooter className="flex justify-end p-4 bg-[#F0FAFF]">
               <span className="text-sm text-gray-500">ID: {post.id}</span>
