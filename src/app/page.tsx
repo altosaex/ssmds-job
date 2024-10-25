@@ -76,8 +76,8 @@ export default function StylishBoard() {
     if (sort === "yearsOfExperience") {
       return b.yearsOfExperience - a.yearsOfExperience;
     } else if (sort === "id") {
-      // IDによる昇順ソート
-      return a.id - b.id;
+      // IDによる降順ソート
+    return b.id - a.id;
     } else {
       return a.job.localeCompare(b.job);
     }
@@ -113,7 +113,10 @@ export default function StylishBoard() {
     <SelectValue placeholder="並び順" className="pl-3 pr-10" />
   </SelectTrigger>
   <SelectContent className="mt-1 border-[#3BB4E5] border-2 rounded-md shadow-lg bg-white">
-    <SelectItem className="relative p-2 pl-3 pr-10 hover:bg-gray-100 flex justify-between items-center" value="job">
+			<SelectItem className="relative p-2 pl-3 pr-10 hover:bg-gray-100 flex justify-between items-center" value="id">
+      新着順
+			</SelectItem>
+			<SelectItem className="relative p-2 pl-3 pr-10 hover:bg-gray-100 flex justify-between items-center" value="job">
       職業名順
       <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#3BB4E5]"></span>
 			</SelectItem>
@@ -122,9 +125,7 @@ export default function StylishBoard() {
       <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#3BB4E5]"></span>
 			</SelectItem>
     
-			<SelectItem className="relative p-2 pl-3 pr-10 hover:bg-gray-100 flex justify-between items-center" value="id">
-      ID順
-			</SelectItem>
+
 		</SelectContent>
 </Select>
 
