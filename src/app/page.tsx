@@ -43,7 +43,9 @@ const dummyPosts: Post[] = [
 	{ id: 14, status: "前職", job: "設計エンジニア", industry: "自動車メーカー", yearsOfExperience: 5, nickname: "てんのう", age: "31歳", gender: "女性", comment: "自動車メーカーで設計エンジニアをしていました。内装やエンジン周りの部品を、CATIAやNXで3Dモデリングしたり、図面を書いていました。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/AoyamaSaki2.jpeg", sessionVideo: "ON", preferredSessionTime: "都度相談" },
 	{ id: 15, status: "現職", job: "SE", industry: "医療系IT", yearsOfExperience: 3, nickname: "永松", age: "28歳", gender: "男性", comment: "九州出身で就職を機に上京、1社目。顧客は主に病院でアプリケーション導入、納品、カスタマイズ等を担当。設計からプログラミングを浅く広く実施しています。人事に異動を計画中", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "都度相談", preferredSessionTime: "土日祝日中" },
 	{ id: 16, status: "現職", job: "CAEエンジニア", industry: "製造業", yearsOfExperience: 8, nickname: "だいちゃん", age: "36歳", gender: "男性", comment: "自動車メーカーを中心にCAE解析関連の様々な現場の困りごと解決のお手伝いをさせていただいてます。チームリーダーとしてシミュレーション用のモデル構築からツール開発まで、様々な業務に関わっています。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/DaisukeSatoh.jpg", sessionVideo: "ON", preferredSessionTime: "都度相談" },
-	{ id: 17, status: "現職", job: "事業会社Bizdev", industry: "金融•決済", yearsOfExperience: 14, nickname: "ゆーすけ", age: "30代", gender: "男性", comment: "事業開発をしてます。プロダクト開発、マーケティング、事業計画、アライアンスなど事業に関わることは広くやってきました。最近は、金融分野のプロダクト企画や中期計画、マーケティングをマネジャーの立場でチームを率いてます。中途採用しながら、チーム拡大中です", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "ON" , preferredSessionTime: "都度相談" },
+	{ id: 17, status: "現職", job: "事業会社Bizdev", industry: "金融•決済", yearsOfExperience: 14, nickname: "ゆーすけ", age: "30代", gender: "男性", comment: "事業開発をしてます。プロダクト開発、マーケティング、事業計画、アライアンスなど事業に関わることは広くやってきました。最近は、金融分野のプロダクト企画や中期計画、マーケティングをマネジャーの立場でチームを率いてます。中途採用しながら、チーム拡大中です", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/man.png", sessionVideo: "ON", preferredSessionTime: "都度相談" },
+	{ id: 18, status: "現職", job: "会社代表", industry: "ハードウェア", yearsOfExperience: 1, nickname: "ふみ", age: "50代", gender: "女性", comment: "30年の外資系会社員人生を経て、これからはライフワークだけで生きていこうと、新しい分野で会社立ち上げ中。今は小さいロボットの企画開発をしています。", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/ToyodaFumiko.jpeg", sessionVideo: "ON", preferredSessionTime: "都度相談" },
+	{ id: 19, status: "現職", job: "ITコンサル（めっちゃ小さい会社）", industry: "ITコンサル", yearsOfExperience: 5, nickname: "しゅっくん", age: "38歳", gender: "非公開", comment: "自己紹介：\n・大学院博士課程で宇宙を研究（研究でセカイを変えたく）\n・ITエンジニア（ITでセカイを変えたくまずは作る）\n・ITコンサル（ITでセカイを変えたく上流へ）\n・起業準備中（事業でセカイを変えたく画策中）\n現職紹介（私のケース）：\n・クライアント先（某大企業）に常駐し、社内向けの全社システム（購買系システムなど）の企画、計画、設計、推進を行っている\n・スポットで別クライアントの短期間の案件（システム化計画等）を担当したりもしている", imageUrl: "https://altosaex.sakura.ne.jp/jobimg/ShukuyaDaishi.jpg", sessionVideo: "ON" , preferredSessionTime: "都度相談" },
 ]
 
 export default function StylishBoard() {
@@ -157,7 +159,12 @@ export default function StylishBoard() {
                 <span>{post.age} / {post.gender}</span>
 							</div>
 							<Separator className="my-2" />
-              <p className="text-gray-700 mt-2 mb-4">{post.comment}</p>
+              <p className="text-gray-700 mt-2 mb-4"> {post.comment.split('\n').map((line, index) => (
+      <React.Fragment key={index}>
+        {line}
+        <br />
+      </React.Fragment>
+    ))}</p>
               <div className="flex flex-col gap-2">
                 <div className="flex items-center justify-between bg-gray-100 rounded-md p-2">
                   <span className="text-sm font-medium text-gray-700">セッション時</span>
