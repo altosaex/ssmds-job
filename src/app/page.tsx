@@ -151,11 +151,11 @@ export default function StylishBoard() {
               <div className="flex items-center gap-4 w-full">
                 <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-[#3BB4E5] shadow-md">
                   <Image
-                    src={post.imageUrl || "/placeholder.svg?height=64&width=64"}
-                    alt={`${post.job}のイメージ画像`}
-                    layout="fill"
-                    objectFit="cover"
-                  />
+  src={post.imageUrl || "/images/placeholder.png"} // プレースホルダーもpublic/imagesに配置
+  alt={`${post.job}のイメージ画像`}
+  layout="fill"
+  objectFit="cover"
+/>
                 </div>
                 <div className="flex-grow">
                   <CardTitle className="text-[#3BB4E5] font-semibold mb-1">{post.job}</CardTitle>
